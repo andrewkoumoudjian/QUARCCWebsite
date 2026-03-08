@@ -8,7 +8,12 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
+    "preview:worker": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
     "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20.17.0"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.0",
@@ -26,6 +31,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.71.0"
   }
 }
