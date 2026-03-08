@@ -6,7 +6,7 @@ import "../pages/Home.css";
 import { formatDate, getHomeContent, getLatestBlogPosts, toContentSlug } from "../lib/content";
 
 const posts = await getLatestBlogPosts(3);
-const home = getHomeContent();
+const home = await getHomeContent();
 ---
 
 <BaseLayout

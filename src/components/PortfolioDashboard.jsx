@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import "./PortfolioDashboard.css";
 import PortfolioChart from "./PortfolioChart";
 
-const PortfolioDashboard = ({ portfolio }) => {
-  const { name, strategy, status, stats, holdings, chartData } = portfolio;
+const PortfolioDashboard = ({ portfolio, showHeader = true }) => {
+  const { name, strategy, status, stats, holdings, chartData, summary } = portfolio;
   const isLive = status === "Active";
 
   // Generate sample chart data if none provided (for demo)
@@ -55,15 +55,18 @@ const PortfolioDashboard = ({ portfolio }) => {
 
   return (
     <div className="portfolio-dashboard">
-      <div className="portfolio-header">
-        <div>
-          <h3 className="portfolio-title">{name}</h3>
-          <p className="portfolio-strategy">{strategy}</p>
+      {showHeader ? (
+        <div className="portfolio-header">
+          <div className="portfolio-heading">
+            <h3 className="portfolio-title">{name}</h3>
+            <p className="portfolio-strategy">{strategy}</p>
+            <p className="portfolio-summary">{summary}</p>
+          </div>
+          <span className={`portfolio-status ${isLive ? "" : "inactive"}`}>
+            ● {status.toUpperCase()}
+          </span>
         </div>
-        <span className={`portfolio-status ${isLive ? "" : "inactive"}`}>
-          ● {status.toUpperCase()}
-        </span>
-      </div>
+      ) : null}
 
       <div className="portfolio-stats">
         <div className="stat-item">
@@ -92,9 +95,9 @@ const PortfolioDashboard = ({ portfolio }) => {
       </div>
 
       <div className="portfolio-holdings">
-        <h4>Current Positions (top 5)</h4>
+        <h4 className="portfolio-section-title">Current Positions</h4>
         {topHoldings.length === 0 ? (
-          <p style={{ color: "#8b949e", padding: "1rem" }}>No open positions</p>
+          <p className="portfolio-empty">No open positions</p>
         ) : (
           <table>
             <thead>
@@ -129,7 +132,7 @@ const PortfolioDashboard = ({ portfolio }) => {
       <div className="portfolio-chart-container">
         <PortfolioChart
           data={processedChartData}
-          height={180}
+          height={220}
           accentColor="#58a6ff"
         />
       </div>

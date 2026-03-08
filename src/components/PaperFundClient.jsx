@@ -45,7 +45,7 @@ function mergePortfolios(staticPortfolios, livePortfolios) {
   });
 }
 
-export default function PaperFundClient({ portfolios = [] }) {
+export default function PaperFundClient({ portfolios = [], showDashboardHeader = true }) {
   const [livePortfolios, setLivePortfolios] = useState([]);
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
@@ -101,23 +101,24 @@ export default function PaperFundClient({ portfolios = [] }) {
 
   return (
     <div className="paper-fund-live">
-      <div className="paper-fund-status">
-        {status === "loading" ? "Loading live portfolio data..." : null}
+      <div className={`paper-fund-status paper-fund-status-${status}`}>
+        {status === "loading" ? "Loading live portfolio data." : null}
         {status === "ready" ? "Live portfolio feed connected." : null}
         {status === "disabled"
-          ? "Live API not configured. Showing file-based fallback data."
+          ? "Static portfolio snapshots shown below."
           : null}
         {status === "error"
-          ? `${error} Showing file-based fallback data.`
+          ? `${error} Static portfolio snapshots shown below.`
           : null}
       </div>
 
       <div className="paper-fund-grid">
         {mergedPortfolios.map((portfolio) => (
-          <div key={portfolio.id}>
-            <p className="paper-fund-summary">{portfolio.summary}</p>
-            <PortfolioDashboard portfolio={portfolio} />
-          </div>
+          <PortfolioDashboard
+            key={portfolio.id}
+            portfolio={portfolio}
+            showHeader={showDashboardHeader}
+          />
         ))}
       </div>
     </div>

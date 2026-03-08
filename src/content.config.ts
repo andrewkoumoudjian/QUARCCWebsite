@@ -86,9 +86,41 @@ const portfolios = defineCollection({
   }),
 });
 
+const home = defineCollection({
+  type: "data",
+  schema: z.object({
+    clubDetails: z.array(z.tuple([z.string(), z.string()])),
+    projectStatus: z.array(z.tuple([z.string(), z.string()])),
+    welcomeTitle: z.string(),
+    welcomeBody: z.string(),
+  }),
+});
+
+const about = defineCollection({
+  type: "data",
+  schema: z.object({
+    paragraphs: z.array(z.string()),
+  }),
+});
+
+const join = defineCollection({
+  type: "data",
+  schema: z.object({
+    sections: z.array(
+      z.object({
+        title: z.string(),
+        lines: z.array(z.string()),
+      }),
+    ),
+  }),
+});
+
 export const collections = {
   blog,
   events,
   teams,
   portfolios,
+  home,
+  about,
+  join,
 };

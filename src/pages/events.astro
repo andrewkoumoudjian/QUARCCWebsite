@@ -24,7 +24,7 @@ const pastEvents = events
         upcomingEvents.length ? (
           <ul style="list-style-type: none; padding: 0;">
             {upcomingEvents.map((event) => (
-              <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+              <li style="margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #eee;">
                 <div style="font-weight: bold; font-size: 1.2em;">
                   {event.link ? (
                     <a href={event.link} target="_blank" rel="noopener noreferrer">
@@ -43,7 +43,7 @@ const pastEvents = events
                   </a>
                   {event.room ? <span> ({event.room})</span> : null}
                 </div>
-                <div>{event.description}</div>
+                <div style="white-space: pre-line;">{event.description}</div>
               </li>
             ))}
           </ul>
@@ -58,7 +58,7 @@ const pastEvents = events
         pastEvents.length ? (
           <ul style="list-style-type: none; padding: 0;">
             {pastEvents.map((event) => (
-              <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+              <li style="margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #eee;">
                 <div style="font-weight: bold; font-size: 1.2em;">
                   {event.link ? (
                     <a href={event.link} target="_blank" rel="noopener noreferrer">
@@ -77,7 +77,7 @@ const pastEvents = events
                   </a>
                   {event.room ? <span> ({event.room})</span> : null}
                 </div>
-                <div>{event.description}</div>
+                <div style="white-space: pre-line;">{event.description}</div>
               </li>
             ))}
           </ul>

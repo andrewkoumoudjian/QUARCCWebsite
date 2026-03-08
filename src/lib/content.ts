@@ -1,5 +1,4 @@
 import { getCollection } from "astro:content";
-import { siteContent } from "../data/site";
 
 export function toContentSlug(id: string) {
   return id.replace(/\.(md|mdx|json)$/i, "");
@@ -37,16 +36,19 @@ export async function getPortfolios() {
   return sortByOrder(await getCollection("portfolios"));
 }
 
-export function getHomeContent() {
-  return siteContent.home;
+export async function getHomeContent() {
+  const [entry] = await getCollection("home");
+  return entry.data;
 }
 
-export function getAboutContent() {
-  return siteContent.about;
+export async function getAboutContent() {
+  const [entry] = await getCollection("about");
+  return entry.data;
 }
 
-export function getJoinContent() {
-  return siteContent.join;
+export async function getJoinContent() {
+  const [entry] = await getCollection("join");
+  return entry.data;
 }
 
 export function formatDate(date: Date) {
