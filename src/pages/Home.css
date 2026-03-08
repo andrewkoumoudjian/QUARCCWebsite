@@ -40,7 +40,7 @@
 
 .posts-section {
     width: min(100%, 560px);
-    margin-top: 1.15rem;
+    margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: grid;
@@ -77,7 +77,7 @@
     display: grid;
     gap: 0.16rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 0.35rem;
+    border-radius: 0;
     padding: 0.9rem 1rem 0.95rem;
     color: inherit;
     background: linear-gradient(180deg, rgba(8, 9, 12, 0.98), rgba(10, 11, 14, 0.98));
